@@ -36,15 +36,15 @@ Update the file `api_template/config/prod_config.py` declaring the AWS configura
 To deploy the API, firstly, run the following command:
 
 ```bash
-    sls deploy
+sls deploy
 ```
 
 This command will create a DynamoDB table using the AWS DynamoDB service and also create an S3 bucket. You can load your zipped application into the S3 bucket. To zip your application, execute the following commands:
 
 ```bash
-	cp -r ./api_template ./api_template/lambda_function
-	pip3 install -t api_template/lambda_function -r requirements.txt
-	cd api_template && (cd lambda_function; zip ../lambda_artifact.zip -r .) && rm -rf lambda_function
+cp -r ./api_template ./api_template/lambda_function
+pip3 install -t api_template/lambda_function -r requirements.txt
+cd api_template && (cd lambda_function; zip ../lambda_artifact.zip -r .) && rm -rf lambda_function
 ```
 
 Upload the generated zip file to the previously created S3 bucket.
