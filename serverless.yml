@@ -1,0 +1,32 @@
+service: api-template
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+        - s3:PutObject
+      Resource: "arn:aws:dynamodb:us-east-1:123456789012:table/MyTable"
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource:
+        - "arn:aws:s3:::awsbucket-api-temp/*"
+resources:
+  Resources:
+    MyTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: "users"
+        AttributeDefinitions:
+          - AttributeName: "userId"
+            AttributeType: "N"
+        KeySchema:
+          - AttributeName: "userId"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5

@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-from app.routes.users import router as users_router
+from users import router as users_router
 from fastapi.openapi.utils import get_openapi
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
 
 app.include_router(users_router)
 
