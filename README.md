@@ -39,7 +39,7 @@ To deploy the API, firstly, run the following command:
 sls deploy
 ```
 
-This command will create a DynamoDB table using the AWS DynamoDB service and also create an S3 bucket. You can load your zipped application into the S3 bucket. To zip your application, execute the following commands:
+This command will create a DynamoDB table using the AWS DynamoDB service. You can load your zipped application into an S3 bucket. To zip your application, execute the following commands:
 
 ```bash
 cp -r ./api_template ./api_template/lambda_function
